@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Deneme</title>
+</head>
+<body>
+    <div>
+        <p>Burası Layout</p> @*bu dive normal yazmak istediklerimizi yazdık çünkü layout herherde görünür. renderbody olan yere ise diğer sayfadakiler otomatik 
+                                 olarak geldi.*@
+    </div>
+
+    <div> 
+        @RenderBody()  @*Bir layout var okey ama sayfa çalışırken layoutun neresine gelecek onu belirler. Mesela burada sayfayı div arasıda çalıştırdık.
+                           Yani bu kısım çalıştırılan sayfayı içerir layout içindeki kodlar + bu kısım artık hangi sayfayı çalıştırmak istersek burada çalışacak
+                           (tabi bu layouta bağlı olmalı)
+                           Ayrıca başına @ işareti getirerek backend kodlarını frontedend içinde de kullanabiliriz.*@
+    </div>
+</body>
+</html>

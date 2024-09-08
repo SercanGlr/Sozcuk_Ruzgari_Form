@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+
+@{
+    ViewBag.Title = "GetAllContent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string searchTerm = ViewBag.SearchTerm as string;
+}
+
+@using (Html.BeginForm("GetAllContent", "Content", FormMethod.Post))
+{
+    <p>
+        <br />
+        Aranacak Kelimeyi Giriniz: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<br />
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="timeline">
+                <div>
+                    <i class="fas fa-comment bg-yellow"></i>
+                    <div class="timeline-item">
+                        <h3 class="timeline-header">
+                            <a href="#">@item.Writer.WriterName @item.Writer.WriterSurName</a>
+                        </h3>
+
+                        <div class="timeline-body">
+                            @if (!string.IsNullOrEmpty(searchTerm) && item.ContentValue.Contains(searchTerm))
+                            {
+                                @Html.Raw(item.ContentValue.Replace(searchTerm, $"<span style='background-color: yellow;'>{searchTerm}</span>"))
+                            }
+                            else
+                            {
+                                @item.ContentValue
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

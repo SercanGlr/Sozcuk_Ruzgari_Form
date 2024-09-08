@@ -1,0 +1,74 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewBag.Title = "Writer Register";
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/custom.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h2>Yazar Kayıt Sayfası</h2>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("WriterRegister", "Login", FormMethod.Post))
+                    {
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterName, "Yazar Adı", new { @class = "form-label font-weight-bold" })
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control rounded-pill", placeholder = "Adınızı girin" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterSurName, "Yazar Soyadı", new { @class = "form-label font-weight-bold" })
+                            @Html.TextBoxFor(x => x.WriterSurName, new { @class = "form-control rounded-pill", placeholder = "Soyadınızı girin" })
+                            @Html.ValidationMessageFor(x => x.WriterSurName, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterAbout, "Yazar Hakkında", new { @class = "form-label font-weight-bold" })
+                            @Html.TextAreaFor(x => x.WriterAbout, new { @class = "form-control rounded", placeholder = "Kendiniz hakkında kısa bir açıklama yazın", rows = "4" })
+                            @Html.ValidationMessageFor(x => x.WriterAbout, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterMail, "Yazar Mail", new { @class = "form-label font-weight-bold" })
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control rounded-pill", placeholder = "E-posta adresinizi girin" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterPassword, "Yazar Şifresi", new { @class = "form-label font-weight-bold" })
+                            @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control rounded-pill", placeholder = "Şifrenizi girin" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(x => x.WriterImage, "Yazar Görsel Linki", new { @class = "form-label font-weight-bold" })
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control rounded-pill", placeholder = "Görsel linkinizi girin" })
+                            @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-4">
+                            @Html.LabelFor(x => x.WriterTittle, "Yazar Ünvanı", new { @class = "form-label font-weight-bold" })
+                            @Html.TextBoxFor(x => x.WriterTittle, new { @class = "form-control rounded-pill", placeholder = "Ünvanınızı girin" })
+                            @Html.ValidationMessageFor(x => x.WriterTittle, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill w-100">Kayıt Ol</button>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer text-center
+                                         <small class="text-muted">Zaten bir hesabınız var mı? <a href="@Url.Action("WriterLogin", "Login")" class="text-primary">Giriş Yapın</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
